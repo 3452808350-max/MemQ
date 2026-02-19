@@ -15,20 +15,24 @@ from dss_modules.data_loader import get_stock_data
 from dss_modules.features import add_technical_indicators
 from dss_modules.models import StockModel
 
-# ============ 模拟基本面数据 (待替换为真实API) ============
+# ============ 真实基本面数据 ============
 
-def get_fundamentals_simulated(symbol):
-    """模拟基本面数据 - 实际项目中应替换为真实API"""
-    import random
-    np.random.seed(hash(symbol) % 10000)
+def get_fundamentals_real(symbol):
+    """获取真实基本面数据 - 使用东方财富API"""
+    from dss_modules.data_fundamentals import get_stock_realtime
     
-    # 随机生成基本面指标
+    data = get_stock_realtime(symbol)
+    if data is None:
+        return None
+    
+    # 转换格式
     fundamentals = {
-        'pe_ratio': np.random.uniform(5, 50),      # 市盈率
-        'pb_ratio': np.random.uniform(0.5, 10),    # 市净率
-        'roe': np.random.uniform(-10, 30),          # 净资产收益率
-        'dividend_yield': np.random.uniform(0, 5), # 股息率
-        'debt_ratio': np.random.uniform(10, 80),    # 资产负债率
+        'pe_ratio': data.get('pe', 0) if data.get('pe', 0) > 0 else 0,
+        'pb_ratio': data.get('pb', 0),
+        # ROE, 股息率, 资产负债率 需要从其他API获取，此处设为默认值
+        'roe': 0,
+        'dividend_yield': 0,
+        'debt_ratio': 0,
     }
     return fundamentals
 
@@ -90,10 +94,11 @@ class ImprovedStockPicker:
         if len(df) < 30:
             return None
         
-        # 添加基本面特征 (模拟)
-        fundamentals = get_fundamentals_simulated(symbol)
-        for key, value in fundamentals.items():
-            df[key] = value
+        # 添加基本面特征 (真实数据)
+        fundamentals = get_fundamentals_real(symbol)
+        if fundamentals:
+            for key, value in fundamentals.items():
+                df[key] = value
         
         return df
     

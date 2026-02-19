@@ -2282,38 +2282,16 @@ def fetch_from_sina(symbol):
     except:
         pass
     
-    # 最后使用纯模拟数据
-    return generate_simulated_data(100, symbol)
+    # 没有真实数据可用，返回None
+    print(f"    → 无法获取 {symbol} 的真实数据")
+    return None
 
 
 def generate_simulated_data(base_price, symbol, n_days=500):
-    """生成模拟历史数据
-    
-    使用固定随机种子确保可复现性
-    """
-    import pandas as pd
-    import numpy as np
-    
-    # 使用固定随机种子 (P0)
-    np.random.seed(RANDOM_SEED + hash(symbol) % 10000)
-    
-    # 生成价格序列
-    dates = pd.date_range(end=pd.Timestamp.now(), periods=n_days, freq='D')
-    
-    # 使用几何布朗运动
-    returns = np.random.randn(n_days) * 0.02
-    prices = base_price * np.cumprod(1 + returns)
-    
-    df = pd.DataFrame({
-        'open': prices * 0.99,
-        'high': prices * 1.02,
-        'low': prices * 0.98,
-        'close': prices,
-        'volume': np.random.randint(1000000, 10000000, n_days)
-    }, index=dates)
-    
-    df.columns = [c.lower() for c in df.columns]
-    return df
+    """已废弃 - 不再使用模拟数据
+    如需测试，请使用真实数据源"""
+    print(f"警告: generate_simulated_data 已废弃，请使用真实数据")
+    return None
 
 
 def run_dss_analysis(symbols=None, 
