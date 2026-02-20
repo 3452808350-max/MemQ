@@ -1,0 +1,22 @@
+version: 1
+agent:
+  name: kaguya-assistant
+  extend: default
+  system_prompt_path: ./system.md
+  system_prompt_args:
+    PROJECT: "DSS选股系统"
+    WORKSPACE: "/home/kyj/.openclaw/workspace"
+    
+  # 排除不需要的工具
+  exclude_tools:
+    - "kimi_cli.tools.web:SearchWeb"
+    - "kimi_cli.tools.web:FetchURL"
+  
+  # 子Agent定义
+  subagents:
+    coder:
+      path: ./coder-sub.yaml
+      description: "处理代码开发任务"
+    analyst:
+      path: ./analyst-sub.yaml
+      description: "处理数据分析任务"
