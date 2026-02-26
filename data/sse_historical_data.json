@@ -1,0 +1,74 @@
+[
+  {
+    "year": 2005,
+    "market_cap_total": 26014.34,
+    "market_cap_negotiable": 7350.88,
+    "stock_count": 1094,
+    "trading_value": 18024.21,
+    "trading_volume": 4455.25,
+    "sse_index_high": 1223.57,
+    "sse_index_low": 998.23,
+    "sse_index_close": 1161.06,
+    "notes": "股改试点启动"
+  },
+  {
+    "year": 2006,
+    "market_cap_total": 23096.13,
+    "market_cap_negotiable": 8193.95,
+    "stock_count": 1164,
+    "trading_value": 57834.14,
+    "trading_volume": 15634.83,
+    "sse_index_high": 2698.9,
+    "sse_index_low": 1161.06,
+    "sse_index_close": 2675.47,
+    "notes": "股权分置改革"
+  },
+  {
+    "year": 2007,
+    "market_cap_total": 71612.38,
+    "market_cap_negotiable": 21378.76,
+    "stock_count": 1250,
+    "trading_value": 300815.75,
+    "trading_volume": 44834.17,
+    "sse_index_high": 6124.04,
+    "sse_index_low": 2541.53,
+    "sse_index_close": 5261.56,
+    "notes": "大牛市顶点"
+  },
+  {
+    "year": 2008,
+    "market_cap_total": 97251.91,
+    "market_cap_negotiable": 36620.61,
+    "stock_count": 1366,
+    "trading_value": 236506.83,
+    "trading_volume": 36513.6,
+    "sse_index_high": 5522.78,
+    "sse_index_low": 1664.93,
+    "sse_index_close": 1820.81,
+    "notes": "金融危机"
+  },
+  {
+    "year": 2015,
+    "market_cap_total": 255146.35,
+    "market_cap_negotiable": 244038.84,
+    "stock_count": 1284,
+    "trading_value": 1326105.43,
+    "trading_volume": 416928.2,
+    "sse_index_high": 5178.19,
+    "sse_index_low": 2927.29,
+    "sse_index_close": 3539.18,
+    "notes": "杠杆牛+股灾"
+  },
+  {
+    "year": 2016,
+    "market_cap_total": 287422.37,
+    "market_cap_negotiable": 264739.59,
+    "stock_count": 1318,
+    "trading_value": 1154093.63,
+    "trading_volume": 309601.81,
+    "sse_index_high": 3538.69,
+    "sse_index_low": 2638.3,
+    "sse_index_close": 3103.64,
+    "notes": "熔断后震荡"
+  }
+]
