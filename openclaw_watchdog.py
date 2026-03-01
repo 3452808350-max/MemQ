@@ -26,9 +26,9 @@ from pathlib import Path
 from typing import Optional, Dict, List
 import signal
 
-# 配置
-CONFIG = {
-    "check_interval_seconds": 30,      # 检查间隔
+# 默认配置
+DEFAULT_CONFIG = {
+    "check_interval_seconds": 300,     # 检查间隔（5 分钟）
     "max_restart_attempts": 3,          # 最大重启尝试次数
     "restart_delay_seconds": 5,         # 重启延迟
     "gateway_port": 18789,              # Gateway 端口
@@ -36,7 +36,26 @@ CONFIG = {
     "log_file": "~/.openclaw/watchdog.log",
     "state_file": "~/.openclaw/watchdog_state.json",
     "telegram_notify": True,            # 是否发送 Telegram 通知
+    "log_level": "INFO",
 }
+
+# 配置文件路径
+CONFIG_FILE = Path.home() / ".openclaw" / "watchdog_config.json"
+
+def load_config():
+    """从配置文件加载配置"""
+    config = DEFAULT_CONFIG.copy()
+    if CONFIG_FILE.exists():
+        try:
+            with open(CONFIG_FILE, 'r') as f:
+                file_config = json.load(f)
+                config.update(file_config)
+        except Exception as e:
+            print(f"加载配置文件失败：{e}，使用默认配置")
+    return config
+
+# 加载配置
+CONFIG = load_config()
 
 # 日志设置
 logging.basicConfig(
