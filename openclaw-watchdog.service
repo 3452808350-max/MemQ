@@ -1,0 +1,26 @@
+[Unit]
+Description=OpenClaw Watchdog - Gateway 监控和自动修复
+After=network.target
+Wants=openclaw-gateway.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/kyj/.openclaw/workspace/openclaw_watchdog.py
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+# 环境变量
+Environment=PYTHONUNBUFFERED=1
+Environment=OPENCLAW_HOME=/home/kyj/.openclaw
+
+# 安全设置
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=read-only
+ReadWritePaths=/home/kyj/.openclaw
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target
