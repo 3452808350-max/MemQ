@@ -1,0 +1,11 @@
+2026-02-28 18:40:09 | INFO     | ✅ [AAPL] 数据来源：Alpha Vantage API | 状态：success | URL: https://www.alphavantage.co/query?function=TIME_SERIES_DAILY
+2026-02-28 18:40:09 | ERROR    | ❌ [AMZN] 数据来源：Alpha Vantage API | 状态：failed | 错误：API 限制：感谢使用 Alpha Vantage...
+2026-02-28 18:40:09 | INFO     | 📦 [NVDA] 数据来源：本地缓存 (data_cache/stock_data.parquet) | 状态：cached | URL: N/A
+2026-02-28 18:41:38 | INFO     | 📦 [AAPL] 数据来源：本地缓存 (./data_cache/stock_data.csv) | 状态：cached | URL: N/A
+2026-02-28 18:41:38 | INFO     | 📦 [AMZN] 数据来源：本地缓存 (./data_cache/stock_data.csv) | 状态：cached | URL: N/A
+2026-02-28 18:42:06 | INFO     | 📦 [AAPL] 数据来源：本地缓存 (data_cache/stock_data.csv) | 状态：cached | URL: N/A
+2026-02-28 18:42:06 | INFO     | ✅ [MSFT] 数据来源：Alpha Vantage API | 状态：success | URL: https://www.alphavantage.co/query?function=TIME_SERIES_DAILY
+2026-02-28 18:42:06 | ERROR    | ❌ [AMZN] 数据来源：Alpha Vantage API | 状态：failed | 错误：API 限制：感谢使用 Alpha Vantage，请考虑付费套餐
+2026-02-28 18:42:06 | WARNING  | ⚠️ [UNKNOWN] 数据来源：Alpha Vantage / AKShare / Sina (全部失败) | 状态：unavailable - 暂时无法获取，未伪造数据
+2026-02-28 18:42:06 | INFO     | 📦 [AAPL] 数据来源：本地缓存 (./data_cache/stock_data.csv) | 状态：cached | URL: N/A
+2026-02-28 18:42:06 | INFO     | 📦 [NVDA] 数据来源：本地缓存 (./data_cache/stock_data.csv) | 状态：cached | URL: N/A

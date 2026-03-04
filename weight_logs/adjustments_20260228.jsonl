@@ -1,0 +1,99 @@
+{
+  "action": "initialize",
+  "timestamp": "2026-02-28T18:40:09.649066",
+  "weights": {
+    "rsi_weight": 0.25,
+    "macd_weight": 0.25,
+    "volume_weight": 0.2,
+    "trend_weight": 0.2,
+    "volatility_weight": 0.1
+  },
+  "description": "初始权重配置 - 均衡型"
+}
+{
+  "action": "adjust",
+  "timestamp": "2026-02-28T18:40:09.649614",
+  "param_name": "rsi_weight",
+  "old_value": 0.25,
+  "new_value": 0.3,
+  "change": 0.04999999999999999,
+  "reason": "RSI 在震荡市场表现更好",
+  "performance_impact": 0.0123
+}
+{
+  "action": "evaluate",
+  "timestamp": "2026-02-28T18:40:09.649980",
+  "weights": {
+    "rsi_weight": 0.3,
+    "macd_weight": 0.25,
+    "volume_weight": 0.2,
+    "trend_weight": 0.2,
+    "volatility_weight": 0.1
+  },
+  "metrics": {
+    "accuracy": 0.72,
+    "sharpe_ratio": 1.85,
+    "max_drawdown": -0.15
+  },
+  "is_best": true
+}
+{
+  "action": "initialize",
+  "timestamp": "2026-02-28T18:42:06.546013",
+  "weights": {
+    "rsi_weight": 0.25,
+    "macd_weight": 0.25,
+    "volume_weight": 0.2,
+    "trend_weight": 0.2,
+    "volatility_weight": 0.1
+  },
+  "description": "DSS v2.0 - 均衡型配置"
+}
+{
+  "action": "adjust",
+  "timestamp": "2026-02-28T18:42:06.546470",
+  "param_name": "rsi_weight",
+  "old_value": 0.25,
+  "new_value": 0.3,
+  "change": 0.04999999999999999,
+  "reason": "RSI 在震荡市场表现更好",
+  "performance_impact": 0.0123
+}
+{
+  "action": "adjust",
+  "timestamp": "2026-02-28T18:42:06.546917",
+  "param_name": "macd_weight",
+  "old_value": 0.25,
+  "new_value": 0.2,
+  "change": -0.04999999999999999,
+  "reason": "MACD 在低波动市场信号较弱",
+  "performance_impact": -0.0056
+}
+{
+  "action": "adjust",
+  "timestamp": "2026-02-28T18:42:06.547305",
+  "param_name": "volume_weight",
+  "old_value": 0.2,
+  "new_value": 0.25,
+  "change": 0.04999999999999999,
+  "reason": "成交量放大时预测准确率更高",
+  "performance_impact": 0.0089
+}
+{
+  "action": "evaluate",
+  "timestamp": "2026-02-28T18:42:06.547632",
+  "weights": {
+    "rsi_weight": 0.3,
+    "macd_weight": 0.2,
+    "volume_weight": 0.25,
+    "trend_weight": 0.2,
+    "volatility_weight": 0.1
+  },
+  "metrics": {
+    "accuracy": 0.72,
+    "sharpe_ratio": 1.85,
+    "max_drawdown": -0.15,
+    "win_rate": 0.68
+  },
+  "is_best": true
+}

@@ -197,7 +197,7 @@ def calculate_adaptive_score(prices, rsi_data, macd_data, volume):
     else:
         macd_score = -20 + max(-10, latest_hist * 10)
     score += macd_score
-    details.append(f"MACD({macd_info['cross']}): {macd_score:+d}")
+    details.append(f"MACD({macd_info['cross']}): {int(macd_score):+d}")
     
     # 趋势评分 (权重: 20%)
     if macd_info['regime'] == 'trending':

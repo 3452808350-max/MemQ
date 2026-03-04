@@ -51,20 +51,28 @@ def fetch_alpha_vantage(symbol: str, full: bool = False) -> Optional[pd.DataFram
         return None
 
 # ============ FMP 基本面数据 ============
-def fetch_fmp_fundamentals(symbol: str) -> Optional[Dict]:
-    """FMP获取基本面数据"""
-    url = f"https://financialmodelingprep.com/api/v3/ratios/{symbol}?apikey={FMP_KEY}"
+# ============ Alpha Vantage 基本面数据 ============
+def fetch_av_fundamentals(symbol: str) -> Optional[Dict]:
+    """Alpha Vantage 获取基本面数据 (OVERVIEW)"""
+    url = f"https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={AV_KEY}"
     try:
-        r = requests.get(url, timeout=10)
-        if r.status_code != 200:
-            return None
+        r = requests.get(url, timeout=15)
         data = r.json()
-        if isinstance(data, list) and len(data) > 0:
-            return data[0]
+        if 'Note' in data or 'Information' in data:
+            print(f"[!] AV rate limited for fundamentals")
+            return None
+        if data.get('Symbol'):
+            return data
         return None
-    except:
+    except Exception as e:
+        print(f"[!] AV fundamentals error: {e}")
         return None
 
+# ============ FMP 基本面数据 (已弃用) ============
+def fetch_fmp_fundamentals(symbol: str) -> Optional[Dict]:
+    """FMP 获取基本面数据 - 已弃用，Legacy endpoint 不再支持"""
+    # FMP legacy endpoints deprecated as of Aug 2025
+    return None
 def fetch_fmp_indicator(indicator: str = "gdp") -> Optional[pd.DataFrame]:
     """FMP获取宏观经济指标"""
     url = f"https://financialmodelingprep.com/api/v3/{indicator}?apikey={FMP_KEY}"
@@ -171,7 +179,7 @@ def get_fundamentals(symbol: str) -> Optional[Dict]:
                 return json.load(f)
     
     # 获取
-    data = fetch_fmp_fundamentals(symbol)
+    data = fetch_av_fundamentals(symbol)
     if data:
         with open(cache_file, 'w') as f:
             json.dump(data, f)

@@ -1,0 +1,66 @@
+{
+  "timestamp": "2026-03-02T07:47:47.331765",
+  "macro_indicators": {
+    "vix": 0.0,
+    "treasury_10y": 4.02,
+    "gold": 483.75,
+    "timestamp": "2026-03-02T07:47:47.327752"
+  },
+  "macro_changes_7d": {},
+  "risk_index": {
+    "risk_index": 50,
+    "risk_level": "NORMAL",
+    "factors": {
+      "treasury": "正常",
+      "gold": "正常"
+    },
+    "timestamp": "2026-03-02T07:47:47.330440"
+  },
+  "news_sentiment": {
+    "sentiment_score": 0,
+    "hurt_industries": [],
+    "benefit_industries": []
+  },
+  "stock_impacts": [
+    {
+      "symbol": "sh.601111",
+      "industry": "airline",
+      "macro_adjustment": 0.0
+    },
+    {
+      "symbol": "sh.600029",
+      "industry": "airline",
+      "macro_adjustment": 0.0
+    },
+    {
+      "symbol": "sh.601857",
+      "industry": "energy",
+      "macro_adjustment": 0.0
+    },
+    {
+      "symbol": "sh.600028",
+      "industry": "energy",
+      "macro_adjustment": 0.0
+    },
+    {
+      "symbol": "sh.600519",
+      "industry": "consumer",
+      "macro_adjustment": 0.0
+    },
+    {
+      "symbol": "sz.000858",
+      "industry": "consumer",
+      "macro_adjustment": 0.0
+    },
+    {
+      "symbol": "sh.601318",
+      "industry": "bank",
+      "macro_adjustment": 0.0
+    },
+    {
+      "symbol": "sh.601398",
+      "industry": "bank",
+      "macro_adjustment": 0.0
+    }
+  ]
+}

@@ -253,6 +253,7 @@ def pick_best():
 
 def generate_email_content():
     """生成邮件内容"""
+    from datetime import datetime
     results = pick_best()
     
     if not results:
@@ -270,10 +271,11 @@ def generate_email_content():
     best_trad = trad[0] if trad else None
     best_hightech = hi_tech[0] if hi_tech else None
     
+    today = datetime.now().strftime("%Y年%m月%d日")
     content = f"""
 ══════════════════════════════════════════════════════════
            📊 每日投资建议报告
-           DSS AI选股系统 - 2026年2月17日
+           DSS AI选股系统 - {today}
 ══════════════════════════════════════════════════════════
 
 🏆 今日最佳推荐

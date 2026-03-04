@@ -1,0 +1,74 @@
+{
+  "prediction_date": "2026-02-26",
+  "validation_date": "2026-03-02",
+  "predicted_count": 8,
+  "correct": 2,
+  "wrong": 6,
+  "accuracy": 25.0,
+  "details": [
+    {
+      "name": "兆易创新",
+      "code": "sh.603986",
+      "old_price": 309.4,
+      "new_price": 300.0,
+      "change_pct": -3.0381383322559725,
+      "correct": false
+    },
+    {
+      "name": "恒瑞医药",
+      "code": "sh.600276",
+      "old_price": 56.72,
+      "new_price": 56.56,
+      "change_pct": -0.2820874471085977,
+      "correct": false
+    },
+    {
+      "name": "保利地产",
+      "code": "sh.600048",
+      "old_price": 6.77,
+      "new_price": 6.8,
+      "change_pct": 0.4431314623338294,
+      "correct": true
+    },
+    {
+      "name": "海康威视",
+      "code": "sz.002415",
+      "old_price": 31.56,
+      "new_price": 31.44,
+      "change_pct": -0.3802281368821212,
+      "correct": false
+    },
+    {
+      "name": "中国石化",
+      "code": "sh.600028",
+      "old_price": 6.49,
+      "new_price": 6.46,
+      "change_pct": -0.4622496147919915,
+      "correct": false
+    },
+    {
+      "name": "招商银行",
+      "code": "sh.600036",
+      "old_price": 38.7,
+      "new_price": 38.75,
+      "change_pct": 0.1291989664082614,
+      "correct": true
+    },
+    {
+      "name": "比亚迪",
+      "code": "sz.002594",
+      "old_price": 89.85,
+      "new_price": 89.32,
+      "change_pct": -0.5898720089037297,
+      "correct": false
+    },
+    {
+      "name": "中国石油",
+      "code": "sh.601857",
+      "old_price": 10.89,
+      "new_price": 10.86,
+      "change_pct": -0.2754820936639223,
+      "correct": false
+    }
+  ]
+}

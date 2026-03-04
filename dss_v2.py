@@ -18,16 +18,30 @@ DSS 股票分析系统 v2.0 - 论文增强版 (第 2 周改进)
 6. 回测与风险评估
 7. 数据缓存机制
 8. 风险管理（止损/止盈）
+9. 🆕 数据溯源日志 - 所有数据标注真实来源
+10. 🆕 参数权重日志 - 记录最优解搜索过程
 
 改进历史:
 - 第 2 周 (C-002): 添加新技术指标、特征选择、Walk Forward 参数优化、特征交互项
+- 第 3 周 (C-003): 添加数据溯源日志系统，禁止伪造数据
+
+数据原则:
+- ❌ 不允许伪造数据 - 获取不到就明确标注
+- ✅ 所有数据标注真实来源 URL
+- ✅ 记录所有参数调整和权重变化
+- ✅ 可追溯、可审计、可复现
 """
 
 import numpy as np
 import pandas as pd
 import os
 import warnings
+from datetime import datetime
+
 warnings.filterwarnings('ignore')
+
+# 导入日志系统
+from dss_logger import get_data_tracker, get_weight_logger
 
 # ==================== 固定随机种子 (P0) ====================
 RANDOM_SEED = 42
@@ -2121,7 +2135,7 @@ def fetch_from_akshare(symbol):
         return None
 
 
-def fetch_stock_data_multi_source(symbol):
+def fetch_stock_data_multi_source(symbol, track_source: bool = True):
     """多数据源获取股票数据
     
     按优先级尝试多个数据源：
@@ -2134,6 +2148,7 @@ def fetch_stock_data_multi_source(symbol):
     
     Args:
         symbol: 股票代码，如 'AAPL', '000001.SS', '0700.HK'
+        track_source: 是否记录数据来源（默认 True）
         
     Returns:
         DataFrame: 包含 OHLCV 数据的历史数据
@@ -2142,17 +2157,31 @@ def fetch_stock_data_multi_source(symbol):
         - 所有数据源都是可选的，未安装库不报错
         - 优先使用缓存，减少 API 请求
         - 自动降级到备用数据源
+        - ❌ 不伪造数据 - 获取不到就返回 None 或明确标注
     """
-    # 初始化缓存
+    # 初始化缓存和数据追踪器
     cache = DataCache()
+    tracker = get_data_tracker() if track_source else None
     
     # Step 1: 检查缓存
     cached_data = cache.load(symbol)
     if cached_data is not None and not cache.needs_update(symbol, max_age_days=1):
         print(f"    ✓ 从缓存加载数据：{symbol} ({len(cached_data)} 条)")
+        if tracker:
+            tracker.record_source(
+                data_id=symbol,
+                source_type="Cache",
+                source_url="N/A",
+                source_name=f"本地缓存 ({cache.cache_file_csv})",
+                data_status="cached",
+                metadata={"records": len(cached_data), "cache_dir": cache.cache_dir}
+            )
         return cached_data
     
     print(f"    多数据源获取：{symbol}")
+    
+    # 记录开始尝试
+    last_error = None
     
     # Step 2: 尝试 Alpha Vantage（优先美股）
     try:
@@ -2224,14 +2253,31 @@ def fetch_stock_data_multi_source(symbol):
     df = fetch_from_sina(symbol)
     if df is not None and len(df) > 0:
         cache.save(symbol, df)
+        if tracker:
+            tracker.record_source(
+                data_id=symbol,
+                source_type="Sina",
+                source_url="http://hq.sinajs.cn/",
+                source_name="新浪 API",
+                data_status="success",
+                metadata={"records": len(df)}
+            )
         return df
     
-    # Step 6: 使用模拟数据（最后备用）
-    print(f"    → 使用模拟数据...")
-    df = generate_simulated_data(100, symbol)
-    cache.save(symbol, df)
+    # Step 6: 无法获取数据 - 不伪造
+    print(f"    ⚠️ 无法获取 {symbol} 的真实数据 - 跳过，不伪造")
+    if tracker:
+        tracker.record_source(
+            data_id=symbol,
+            source_type="Multiple",
+            source_url="N/A",
+            source_name="Alpha Vantage / AKShare / Sina (全部失败)",
+            data_status="unavailable",
+            error_message="所有数据源均无法获取真实数据",
+            metadata={"attempted_sources": ["Alpha Vantage", "AKShare", "Sina"]}
+        )
     
-    return df
+    return None
 
 
 def fetch_stock_data(symbol, period='2y'):
@@ -2297,7 +2343,8 @@ def generate_simulated_data(base_price, symbol, n_days=500):
 def run_dss_analysis(symbols=None, 
                      use_probability_calibration=True,
                      use_confidence_filter=True,
-                     test_lightgbm=True):
+                     test_lightgbm=True,
+                     enable_logging=True):
     """运行完整的 DSS 分析流程（v2.0 第 4 周增强版）
     
     第 4 周新增功能:
@@ -2305,6 +2352,8 @@ def run_dss_analysis(symbols=None,
     - 市场状态识别 (MarketRegimeDetector)
     - 数据质量检查增强 (DataQualityChecker)
     - 扩展测试股票池 (美股/A 股/港股)
+    - 🆕 数据溯源日志 - 所有数据标注真实来源
+    - 🆕 参数权重日志 - 记录最优解搜索过程
     
     第 3 周功能:
     - 概率校准 (Platt Scaling)
@@ -2317,9 +2366,27 @@ def run_dss_analysis(symbols=None,
         use_probability_calibration: 是否使用概率校准
         use_confidence_filter: 是否使用置信度过滤
         test_lightgbm: 是否测试 LightGBM 模型
+        enable_logging: 是否启用日志追踪（默认 True）
     """
     if symbols is None:
         symbols = DEFAULT_SYMBOLS[:6]
+    
+    # 初始化日志系统
+    tracker = get_data_tracker() if enable_logging else None
+    weight_logger = get_weight_logger() if enable_logging else None
+    
+    # 初始化权重配置
+    if weight_logger:
+        weight_logger.initialize_weights(
+            weights={
+                'rsi_weight': 0.25,
+                'macd_weight': 0.25,
+                'volume_weight': 0.20,
+                'trend_weight': 0.20,
+                'volatility_weight': 0.10
+            },
+            description="DSS v2.0 - 均衡型配置"
+        )
     
     print("=" * 70)
     print("DSS 股票分析系统 v2.0 - 第 4 周增强版")
@@ -2332,6 +2399,8 @@ def run_dss_analysis(symbols=None,
     print(f"  - 概率校准：{'启用' if use_probability_calibration else '禁用'}")
     print(f"  - 置信度过滤：{'启用' if use_confidence_filter else '禁用'} (阈值=0.65)")
     print(f"  - LightGBM 模型：{'启用' if test_lightgbm else '禁用'}")
+    print(f"  - 🆕 数据溯源日志：{'启用' if enable_logging else '禁用'}")
+    print(f"  - 🆕 参数权重日志：{'启用' if enable_logging else '禁用'}")
     print("=" * 70)
     
     results_summary = {}
@@ -2637,6 +2706,8 @@ if __name__ == '__main__':
     print(f"  - 概率校准：{'启用' if use_calibration else '禁用'}")
     print(f"  - 置信度过滤：{'启用' if use_confidence else '禁用'}")
     print(f"  - LightGBM: {'启用' if test_lgbm else '禁用'}")
+    print(f"  - 🆕 数据溯源日志：启用")
+    print(f"  - 🆕 参数权重日志：启用")
     print()
     
     # 运行分析
@@ -2644,5 +2715,17 @@ if __name__ == '__main__':
         symbols=symbols,
         use_probability_calibration=use_calibration,
         use_confidence_filter=use_confidence,
-        test_lightgbm=test_lgbm
+        test_lightgbm=test_lgbm,
+        enable_logging=True
     )
+    
+    # 生成日志报告
+    print("\n" + "=" * 70)
+    print("📊 生成日志报告")
+    print("=" * 70)
+    
+    tracker = get_data_tracker()
+    print("\n" + tracker.generate_report())
+    
+    weight_logger = get_weight_logger()
+    print("\n" + weight_logger.generate_report())

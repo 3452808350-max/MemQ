@@ -68,7 +68,7 @@ def get_trading_dates(days=10):
         
         while rs.next():
             row = rs.get_row_data()
-            if row and len(row) >= 5 and row[4] == '1':  # is_trading_day
+            if row and len(row) >= 2 and row[1] == '1':  # is_trading_day
                 dates.append(row[0])
     finally:
         bs.logout()
