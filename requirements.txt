@@ -1,0 +1,38 @@
+# Hybrid Memory Architecture - Requirements
+
+# Core dependencies
+torch>=2.4.0
+torchvision>=0.19.0
+torchaudio>=2.4.0
+
+# Vector database
+lancedb>=0.5.0
+
+# Search and retrieval
+redis>=5.0.0
+minio>=7.2.0
+
+# NLP and text processing
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+numpy>=1.26.0
+pandas>=2.2.0
+
+# GPU support (AMD ROCm)
+# Install separately:
+# pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/rocm6.0
+
+# Optional: sentence-transformers for advanced models
+# sentence-transformers>=2.7.0
+
+# Development
+pytest>=8.0.0
+pytest-cov>=4.0.0
+black>=24.0.0
+flake8>=7.0.0
+
+# Documentation
+markdown>=3.5.0
+
+# Utilities
+tqdm>=4.66.0
