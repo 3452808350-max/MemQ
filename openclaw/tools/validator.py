@@ -7,6 +7,7 @@
 
 from typing import Dict, List, Any
 from pathlib import Path
+from dataclasses import dataclass
 from .parser import AICodeParser, FileMetadata
 
 # @class: CodeValidator
