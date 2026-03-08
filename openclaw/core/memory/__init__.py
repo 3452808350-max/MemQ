@@ -2,7 +2,7 @@
 # @module: openclaw.core.memory
 # @purpose: "Memory module exports"
 
-from .schemas import MemoryConfig, MemoryEntry, MemorySearchResult, MemoryStats
+from .schemas import MemoryConfig, MemoryEntry
 from .errors import (
     MemoryStoreError,
     MemoryRetrievalError,
@@ -11,16 +11,25 @@ from .errors import (
     MemoryNotInitializedError
 )
 from .manager import MemoryManager
+from .embedding import EmbeddingGenerator, EmbeddingConfig, EmbeddingPool
 
 __all__ = [
-    "MemoryConfig",
-    "MemoryEntry",
-    "MemorySearchResult",
-    "MemoryStats",
-    "MemoryStoreError",
-    "MemoryRetrievalError",
-    "MemorySearchError",
-    "MemoryCompressionError",
-    "MemoryNotInitializedError",
-    "MemoryManager"
+    # Config
+    'MemoryConfig',
+    'MemoryEntry',
+    
+    # Errors
+    'MemoryStoreError',
+    'MemoryRetrievalError',
+    'MemorySearchError',
+    'MemoryCompressionError',
+    'MemoryNotInitializedError',
+    
+    # Manager
+    'MemoryManager',
+    
+    # Embedding
+    'EmbeddingGenerator',
+    'EmbeddingConfig',
+    'EmbeddingPool'
 ]
