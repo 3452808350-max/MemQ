@@ -69,3 +69,9 @@ benchmark_results/
 # Reports (keep templates, remove generated)
 *_report.json
 !*_template.json
+
+# Node modules (too large for GitHub)
+node_modules/
+
+# Large binary files
+*.node
