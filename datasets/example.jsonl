@@ -1,0 +1,3 @@
+{"question": "MemQ 是什么？", "answer": "MemQ 是一个质量感知的记忆检索系统，用于 LLM Agent 的长期记忆管理。", "category": "general"}
+{"question": "MemQ 的核心特性是什么？", "answer": "零样本质量评分、完美噪声分离、主动噪声抑制。", "category": "features"}
+{"question": "MemQ 的 Recall@5 提升了多少？", "answer": "相比基线提升了 7-12%。", "category": "performance"}

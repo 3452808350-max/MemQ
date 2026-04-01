@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Node
+node_modules/
+
+# Sensitive - NEVER COMMIT
+email_config.json
+email_system.py
+kimi_cli.py
+kimi_remote_api.py
+minio_archive_system.py
+*.key
+*.secret
+*.password
+*.env
+.env
+.env.local
+
+# Memory and personal data
+memory/*.md
+!memory/.gitkeep
+MEMORY.md
+MEMORY.md.backup
+memory-*.md
+
+# Third party
+tools/
+skills/
+dsd-player/
+openclaw/
+openclaw-*
+PerLTQA/
+synthetic_perltqa/
+
+# Logs and temp
+*.log
+*.tmp
+tmp/
+temp/
+
+# OS
+.DS_Store
+Thumbs.db
+cache*/\n*.cache\n.env\n.env.local\n.env.*
