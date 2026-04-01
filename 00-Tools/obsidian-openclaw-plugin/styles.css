@@ -1,0 +1,184 @@
+/* OpenClaw Chat Plugin Styles */
+
+.openclaw-chat-container {
+	padding: 10px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+/* Header */
+.openclaw-header {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--background-modifier-border);
+	margin-bottom: 10px;
+}
+
+.openclaw-header h3 {
+	margin: 0;
+	font-size: 16px;
+}
+
+.openclaw-status {
+	font-size: 12px;
+	color: #ff4444;
+	transition: color 0.3s;
+}
+
+.openclaw-status.connected {
+	color: #44ff44;
+}
+
+/* Controls */
+.openclaw-controls {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 10px;
+	flex-wrap: wrap;
+}
+
+.openclaw-controls button {
+	font-size: 12px;
+	padding: 4px 10px;
+}
+
+/* Messages */
+.openclaw-messages {
+	flex: 1;
+	overflow-y: auto;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	padding: 10px;
+	margin-bottom: 10px;
+	background: var(--background-secondary);
+}
+
+.openclaw-message {
+	margin-bottom: 12px;
+	padding: 8px 12px;
+	border-radius: 8px;
+	max-width: 90%;
+}
+
+.openclaw-message.user {
+	background: var(--interactive-accent);
+	color: var(--text-on-accent);
+	margin-left: auto;
+}
+
+.openclaw-message.assistant {
+	background: var(--background-primary);
+	border: 1px solid var(--background-modifier-border);
+}
+
+.openclaw-message .message-header {
+	display: flex;
+	justify-content: space-between;
+	font-size: 11px;
+	margin-bottom: 4px;
+	opacity: 0.7;
+}
+
+.openclaw-message.user .message-header {
+	color: var(--text-on-accent);
+}
+
+.openclaw-message .message-content {
+	line-height: 1.5;
+}
+
+.openclaw-message .message-content pre {
+	background: var(--background-primary-alt);
+	padding: 8px;
+	border-radius: 4px;
+	overflow-x: auto;
+	margin: 8px 0;
+}
+
+.openclaw-message .message-content code {
+	background: var(--background-primary-alt);
+	padding: 2px 4px;
+	border-radius: 3px;
+	font-family: var(--font-monospace);
+}
+
+.openclaw-message .message-content pre code {
+	background: transparent;
+	padding: 0;
+}
+
+/* Input Area */
+.openclaw-input-area {
+	display: flex;
+	gap: 8px;
+	align-items: flex-start;
+}
+
+.openclaw-input {
+	flex: 1;
+	min-height: 60px;
+	max-height: 150px;
+	resize: vertical;
+	padding: 8px;
+	border: 1px solid var(--background-modifier-border);
+	border-radius: 6px;
+	background: var(--background-primary);
+	font-family: var(--font-interface);
+	font-size: 14px;
+}
+
+.openclaw-input:focus {
+	outline: none;
+	border-color: var(--interactive-accent);
+}
+
+.openclaw-input-area button {
+	padding: 8px 16px;
+	white-space: nowrap;
+}
+
+/* Scrollbar styling */
+.openclaw-messages::-webkit-scrollbar {
+	width: 8px;
+}
+
+.openclaw-messages::-webkit-scrollbar-track {
+	background: var(--background-secondary);
+}
+
+.openclaw-messages::-webkit-scrollbar-thumb {
+	background: var(--background-modifier-border);
+	border-radius: 4px;
+}
+
+.openclaw-messages::-webkit-scrollbar-thumb:hover {
+	background: var(--background-modifier-border-hover);
+}
+
+/* Empty state */
+.openclaw-messages:empty::before {
+	content: "点击「连接」开始对话...";
+	display: block;
+	text-align: center;
+	color: var(--text-muted);
+	padding: 40px 20px;
+	font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+	.openclaw-controls {
+		justify-content: center;
+	}
+	
+	.openclaw-input-area {
+		flex-direction: column;
+	}
+	
+	.openclaw-input-area button {
+		width: 100%;
+	}
+}

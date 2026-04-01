@@ -1,0 +1,44 @@
+{
+  "bug_memory": {
+    "text": "memory-lancedb-pro 记忆召回率只有 80%，查询'性格特点'、'价值观'、'特长'时，部分关键信息（专注、独立、自由、平等、HiFi、电脑硬件）未被检索到。每次检索都出现，100% 可复现。",
+    "category": "fact",
+    "scope": "global",
+    "importance": 0.9,
+    "tags": ["Bug", "记忆系统", "召回率", "数据缺失"],
+    "metadata": {
+      "bug_id": "BUG-20260313-001",
+      
+      "🔍 现象特征": {
+        "environment": "OpenClaw Gateway 2026.3.8, LanceDB, node 24.13.1",
+        "operation": "调用 memory_recall 查询性格特点、价值观、特长",
+        "symptom": "部分关键信息未被检索到，召回率 80%",
+        "error_message": "召回率从 95% 降至 80%",
+        "frequency": "每次检索都出现",
+        "reproducible": "是，100% 可复现"
+      },
+      
+      "📊 影响范围": {
+        "affected_system": "memory-lancedb-pro",
+        "affected_module": "数据检索",
+        "severity": "P2-一般",
+        "user_impact": "记忆检索不完整，影响使用体验"
+      },
+      
+      "🔎 根因分析": {
+        "root_cause": "数据写入环节缺失：1.数据源不同步 2.手动存储缺失 3.自动捕获未工作",
+        "cause_category": "数据缺失"
+      },
+      
+      "✅ 解决方案": {
+        "solution": "1.补充存储 7 条缺失记忆 2.创建同步脚本 3.创建验证脚本 4.配置每天同步 Cron 5.配置每周验证 Cron",
+        "workaround": "手动补充存储缺失信息",
+        "resolution_time": "25 分钟"
+      },
+      
+      "📚 参考信息": {
+        "related_docs": ["memory_recall_root_cause_analysis.md", "memory_prevention_measures.md", "bug_memory_spec.md"],
+        "similar_bugs": []
+      }
+    }
+  }
+}

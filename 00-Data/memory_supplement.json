@@ -1,0 +1,124 @@
+[
+  {
+    "text": "K 的性格特点：专注、好奇、独立。专注体现在技术探索时能持续深入；好奇体现在对未知知识的持续兴趣；独立体现在自主学习和独立思考能力。",
+    "category": "preference",
+    "scope": "global",
+    "importance": 0.9,
+    "tags": [
+      "性格",
+      "特点",
+      "专注",
+      "好奇",
+      "独立"
+    ],
+    "metadata": {
+      "source": "留学文书补充",
+      "added_at": "2026-03-13T20:18:58.545386",
+      "reason": "召回率测试发现缺失"
+    }
+  },
+  {
+    "text": "K 的价值观：自由、平等。受母亲西方教育理念影响，认为每个人都有追求自由发展的权利，应当被平等对待。这些价值观成为为人处世的基本原则。",
+    "category": "preference",
+    "scope": "global",
+    "importance": 0.9,
+    "tags": [
+      "价值观",
+      "自由",
+      "平等"
+    ],
+    "metadata": {
+      "source": "留学文书补充",
+      "added_at": "2026-03-13T20:18:58.545410",
+      "reason": "召回率测试发现缺失"
+    }
+  },
+  {
+    "text": "K 的特长：1.技术（网络技术、系统架构、AI 应用）；2.摄影（技术和人文主题）；3.HiFi（音频设备研究）；4.电脑硬件（配置和组装）。",
+    "category": "preference",
+    "scope": "global",
+    "importance": 0.85,
+    "tags": [
+      "特长",
+      "技能",
+      "技术",
+      "摄影",
+      "HiFi",
+      "电脑硬件"
+    ],
+    "metadata": {
+      "source": "留学文书补充",
+      "added_at": "2026-03-13T20:18:58.545416",
+      "reason": "召回率测试发现缺失"
+    }
+  },
+  {
+    "text": "K 申请韩国成均馆大学（Sungkyunkwan University）人工智能专业。2026-03-13 完成文书填写。选择原因：与三星合作多、提供专心学习环境、位置在首尔。",
+    "category": "fact",
+    "scope": "global",
+    "importance": 0.95,
+    "tags": [
+      "留学",
+      "成均馆",
+      "申请",
+      "AI 专业"
+    ],
+    "metadata": {
+      "source": "留学文书",
+      "added_at": "2026-03-13T20:18:58.545421",
+      "university": "成均馆大学",
+      "major": "人工智能"
+    }
+  },
+  {
+    "text": "K 遇到的困难：1.AI Brain Fry - 连续高强度学习 AI 技术导致头晕、注意力涣散；2.FOMO 焦虑 - 技术更新太快，难以专注单一方向。通过调整作息、控制饮食、训练专注心态来克服。",
+    "category": "fact",
+    "scope": "global",
+    "importance": 0.85,
+    "tags": [
+      "困难",
+      "成长",
+      "AI Brain Fry",
+      "FOMO"
+    ],
+    "metadata": {
+      "source": "留学文书补充",
+      "added_at": "2026-03-13T20:18:58.545427",
+      "reason": "召回率测试发现缺失"
+    }
+  },
+  {
+    "text": "K 的学习计划：大一适应与编程基础（韩语、英语、Python、C++）；大二核心课程与实验室（机器学习、深度学习、LLM）；大三深入专精与实习（强化学习、系统工程、三星实习）；大四毕业设计就业。",
+    "category": "decision",
+    "scope": "global",
+    "importance": 0.9,
+    "tags": [
+      "学习计划",
+      "大学",
+      "实习"
+    ],
+    "metadata": {
+      "source": "留学文书",
+      "added_at": "2026-03-13T20:18:58.545432",
+      "timeline": "2026-2030"
+    }
+  },
+  {
+    "text": "K 的毕业后计划：不读研直接工作，想去三星或 Naver 做 AI 工程师，工作几年后可能回国。长期目标是用系统工程的方法让 AI 黑盒系统更可控、高效。",
+    "category": "decision",
+    "scope": "global",
+    "importance": 0.9,
+    "tags": [
+      "毕业",
+      "就业",
+      "三星",
+      "Naver",
+      "AI 工程师"
+    ],
+    "metadata": {
+      "source": "留学文书",
+      "added_at": "2026-03-13T20:18:58.545437",
+      "career_goal": "AI 系统工程"
+    }
+  }
+]

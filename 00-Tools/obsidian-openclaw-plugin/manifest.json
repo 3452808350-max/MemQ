@@ -1,0 +1,10 @@
+{
+	"id": "openclaw-chat",
+	"name": "OpenClaw Chat",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "Chat with OpenClaw AI assistant directly in Obsidian. Features real-time WebSocket connection, auto-tagging, and note organization.",
+	"author": "K",
+	"authorUrl": "",
+	"isDesktopOnly": true
+}

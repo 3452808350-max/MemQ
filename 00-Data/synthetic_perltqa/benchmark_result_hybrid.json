@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-03-16T10:43:11.264Z",
+  "model": "Qwen3-Embedding-4B",
+  "retrieval": "Hybrid (BM25 + Vector)",
+  "results": {
+    "baseline": {
+      "total_queries": 200,
+      "recall_at_5": "0.725",
+      "recall_at_10": "0.725",
+      "mrr": "0.539"
+    },
+    "small": {
+      "total_queries": 500,
+      "recall_at_5": "0.624",
+      "recall_at_10": "0.624",
+      "mrr": "0.395"
+    },
+    "medium": {
+      "total_queries": 2000,
+      "recall_at_5": "0.310",
+      "recall_at_10": "0.310",
+      "mrr": "0.185"
+    },
+    "medium-large": {
+      "total_queries": 5000,
+      "recall_at_5": "0.155",
+      "recall_at_10": "0.155",
+      "mrr": "0.099"
+    },
+    "large": {
+      "total_queries": 10000,
+      "recall_at_5": "0.092",
+      "recall_at_10": "0.092",
+      "mrr": "0.058"
+    }
+  },
+  "timings": {
+    "baseline": "125.6",
+    "small": "221.3",
+    "medium": "906.8",
+    "medium-large": "2557.8",
+    "large": "5746.6"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "node_520426929e84": {
+    "node_id": "node_520426929e84",
+    "node_type": "source",
+    "name": "\u539f\u59cb\u884c\u60c5\u6570\u636e",
+    "input_nodes": [],
+    "output_nodes": [
+      "node_03eab07ec7f1"
+    ],
+    "transform_params": {
+      "source": "baostock",
+      "symbol": "600519"
+    },
+    "timestamp": "2026-03-25T14:14:25.628436",
+    "hash": ""
+  },
+  "node_03eab07ec7f1": {
+    "node_id": "node_03eab07ec7f1",
+    "node_type": "transform",
+    "name": "\u53bb\u566a\u5904\u7406",
+    "input_nodes": [
+      "node_520426929e84"
+    ],
+    "output_nodes": [
+      "node_05a4b2afa423"
+    ],
+    "transform_params": {
+      "method": "kalman",
+      "Q": 0.005,
+      "R": 0.5
+    },
+    "timestamp": "2026-03-25T14:14:25.628658",
+    "hash": ""
+  },
+  "node_05a4b2afa423": {
+    "node_id": "node_05a4b2afa423",
+    "node_type": "transform",
+    "name": "\u6280\u672f\u6307\u6807",
+    "input_nodes": [
+      "node_03eab07ec7f1"
+    ],
+    "output_nodes": [
+      "node_c0cb7d24f914"
+    ],
+    "transform_params": {
+      "indicators": [
+        "RSI",
+        "MACD",
+        "MA"
+      ]
+    },
+    "timestamp": "2026-03-25T14:14:25.629253",
+    "hash": ""
+  },
+  "node_c0cb7d24f914": {
+    "node_id": "node_c0cb7d24f914",
+    "node_type": "output",
+    "name": "\u9009\u80a1\u8bc4\u5206",
+    "input_nodes": [
+      "node_05a4b2afa423"
+    ],
+    "output_nodes": [],
+    "transform_params": {
+      "model": "xgboost"
+    },
+    "timestamp": "2026-03-25T14:14:25.629946",
+    "hash": ""
+  },
+  "node_4a5be3e8a804": {
+    "node_id": "node_4a5be3e8a804",
+    "node_type": "source",
+    "name": "\u539f\u59cb\u884c\u60c5\u6570\u636e",
+    "input_nodes": [],
+    "output_nodes": [
+      "node_0c4f4690bc84"
+    ],
+    "transform_params": {
+      "source": "baostock",
+      "symbol": "600519"
+    },
+    "timestamp": "2026-03-25T14:15:05.531113",
+    "hash": ""
+  },
+  "node_0c4f4690bc84": {
+    "node_id": "node_0c4f4690bc84",
+    "node_type": "transform",
+    "name": "\u53bb\u566a\u5904\u7406",
+    "input_nodes": [
+      "node_4a5be3e8a804"
+    ],
+    "output_nodes": [
+      "node_b1238ea6cb45"
+    ],
+    "transform_params": {
+      "method": "kalman",
+      "Q": 0.005,
+      "R": 0.5
+    },
+    "timestamp": "2026-03-25T14:15:05.531521",
+    "hash": ""
+  },
+  "node_b1238ea6cb45": {
+    "node_id": "node_b1238ea6cb45",
+    "node_type": "transform",
+    "name": "\u6280\u672f\u6307\u6807",
+    "input_nodes": [
+      "node_0c4f4690bc84"
+    ],
+    "output_nodes": [
+      "node_051a8888f1ff"
+    ],
+    "transform_params": {
+      "indicators": [
+        "RSI",
+        "MACD",
+        "MA"
+      ]
+    },
+    "timestamp": "2026-03-25T14:15:05.532387",
+    "hash": ""
+  },
+  "node_051a8888f1ff": {
+    "node_id": "node_051a8888f1ff",
+    "node_type": "output",
+    "name": "\u9009\u80a1\u8bc4\u5206",
+    "input_nodes": [
+      "node_b1238ea6cb45"
+    ],
+    "output_nodes": [],
+    "transform_params": {
+      "model": "xgboost"
+    },
+    "timestamp": "2026-03-25T14:15:05.533245",
+    "hash": ""
+  }
+}

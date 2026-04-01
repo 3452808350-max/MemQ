@@ -1,0 +1,294 @@
+#!/usr/bin/env python3
+"""
+DSS 统一配置文件
+所有模块共享的配置参数集中管理
+"""
+
+# =============================================================================
+# 评分权重配置
+# =============================================================================
+WEIGHTS = {
+    'rsi': 0.15,           # RSI 指标权重
+    'macd': 0.18,          # MACD 指标权重
+    'ma_trend': 0.12,      # 均线趋势权重
+    'volume': 0.08,        # 成交量权重
+    'bollinger': 0.08,     # 布林带权重
+    'ml_predict': 0.12,    # ML 预测权重
+    'lstm_predict': 0.08,  # LSTM 预测权重 (可用时)
+    'news_sentiment': 0.10,  # 新闻情绪权重 (新增)
+    'crypto_correlation': 0.05,  # 加密货币关联权重 (新增)
+    'macro_environment': 0.04,  # 宏观环境权重 (预留)
+}
+
+# =============================================================================
+# 交易参数配置
+# =============================================================================
+TRADING = {
+    'stop_loss': 0.05,         # 止损比例 5%
+    'take_profit': 0.15,       # 止盈比例 15%
+    'position_base': 0.1,      # 基础仓位 10%
+    'max_position': 0.3,       # 单股票最大仓位 30%
+    'min_cash_reserve': 0.1,   # 最小现金保留 10%
+    'commission': 0.001,       # 交易佣金 0.1%
+}
+
+# =============================================================================
+# 风控参数配置
+# =============================================================================
+RISK = {
+    'low_risk_threshold': 35,       # 低风险阈值
+    'medium_risk_threshold': 60,    # 中风险阈值
+    'volatility_window': 20,        # 波动率计算窗口
+    'rsi_overbought': 70,           # RSI 超买线
+    'rsi_oversold': 30,             # RSI 超卖线
+    'max_drawdown': 0.15,           # 最大回撤 15%
+}
+
+# =============================================================================
+# 模型参数配置
+# =============================================================================
+MODELS = {
+    # LSTM 参数
+    'lstm': {
+        'seq_length': 20,           # 序列长度
+        'hidden_size': 64,          # 隐藏层大小
+        'num_layers': 2,            # LSTM 层数
+        'dropout': 0.2,             # Dropout 比例
+        'epochs': 100,              # 训练轮数
+        'batch_size': 32,           # 批次大小
+        'learning_rate': 0.001,     # 学习率
+        'weight': 0.10,             # 集成权重
+    },
+    
+    # ML 预测参数
+    'ml': {
+        'n_estimators': 100,        # 随机森林树数量
+        'max_depth': 10,            # 最大深度
+        'weight': 0.15,             # 集成权重
+    },
+    
+    # 回测参数
+    'backtest': {
+        'initial_cash': 1000000,    # 初始资金 100 万
+        'use_backtrader': True,     # 优先使用 Backtrader
+    },
+}
+
+# =============================================================================
+# 数据参数配置
+# =============================================================================
+DATA = {
+    'history_days': 500,            # 历史数据天数
+    'min_data_points': 100,         # 最小数据点要求
+    'sse_data_path': 'data/sse_historical_data_2004_2024.json',
+    'cache_enabled': True,          # 启用数据缓存
+    'cache_ttl': 3600,              # 缓存过期时间 (秒)
+}
+
+# =============================================================================
+# 技术指标参数配置
+# =============================================================================
+INDICATORS = {
+    # RSI 参数
+    'rsi': {
+        'base_period': 14,
+        'min_period': 7,
+        'max_period': 28,
+        'lookback': 60,
+    },
+    
+    # MACD 参数
+    'macd': {
+        'base_fast': 12,
+        'base_slow': 26,
+        'base_signal': 9,
+        'fast_fast': 8,      # 趋势市场
+        'fast_slow': 21,
+        'range_fast': 5,     # 震荡市场
+        'range_slow': 17,
+    },
+    
+    # 均线参数
+    'ma': {
+        'short': 5,
+        'medium': 20,
+        'long': 60,
+    },
+    
+    # 布林带参数
+    'bollinger': {
+        'window': 20,
+        'std_low_vol': 1.5,
+        'std_normal': 2.0,
+        'std_high_vol': 2.5,
+    },
+    
+    # ATR 参数
+    'atr': {
+        'period': 14,
+    },
+}
+
+# =============================================================================
+# 市场状态检测参数
+# =============================================================================
+MARKET_REGIME = {
+    'window': 20,                     # 检测窗口
+    'trend_threshold_high': 0.85,     # 趋势判断高位阈值
+    'trend_threshold_low': 0.15,      # 趋势判断低位阈值
+    'consecutive_days': 5,            # 连续同向天数
+}
+
+# =============================================================================
+# 日志配置
+# =============================================================================
+LOGGING = {
+    'level': 'INFO',
+    'format': '%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    'file': 'logs/dss.log',
+    'max_size_mb': 10,
+    'backup_count': 5,
+}
+
+# =============================================================================
+# 外部 API 配置 (新增)
+# =============================================================================
+EXTERNAL_APIS = {
+    # CoinGecko (加密货币)
+    'coingecko': {
+        'base_url': 'https://api.coingecko.com/api/v3',
+        'key': None,  # 无需 Key
+        'enabled': True,
+        'rate_limit': 50,  # 次/分钟
+    },
+    
+    # NewsAPI (新闻情绪)
+    'newsapi': {
+        'base_url': 'https://newsapi.org/v2',
+        'key': '',  # 需申请：https://newsapi.org/register
+        'enabled': False,  # 默认关闭，需配置 Key 后启用
+        'rate_limit': 100,  # 次/天 (免费层)
+    },
+    
+    # QuickChart (图表生成)
+    'quickchart': {
+        'base_url': 'https://quickchart.io/chart',
+        'key': None,  # 免费层无需 Key
+        'enabled': True,
+        'rate_limit': 250,  # 次/月 (免费层)
+    },
+    
+    # FRED (宏观经济数据)
+    'fred': {
+        'base_url': 'https://api.stlouisfed.org/fred',
+        'key': '',  # 需申请
+        'enabled': False,
+    },
+}
+
+# =============================================================================
+# 图表配置
+# =============================================================================
+CHARTS = {
+    'default_width': 800,
+    'default_height': 400,
+    'theme': 'default',  # default/dark/professional
+    'save_path': 'data/charts/',
+    'embed_in_email': True,
+}
+
+# =============================================================================
+# 核心股票池配置
+# =============================================================================
+CORE_STOCKS = {
+    'sh.601398': ('工商银行', '银行'),
+    'sh.600036': ('招商银行', '银行'),
+    'sh.601318': ('中国平安', '保险'),
+    'sh.601857': ('中国石油', '能源'),
+    'sh.600028': ('中国石化', '能源'),
+    'sh.600519': ('贵州茅台', '白酒'),
+    'sz.000858': ('五粮液', '白酒'),
+    'sh.600048': ('保利地产', '地产'),
+    'sh.600104': ('上汽集团', '汽车'),
+    'sh.600900': ('长江电力', '电力'),
+    'sh.600276': ('恒瑞医药', '医药'),
+    'sh.601668': ('中国建筑', '基建'),
+    'sh.603986': ('兆易创新', '芯片'),
+    'sh.600570': ('恒生电子', '软件'),
+    'sz.002594': ('比亚迪', '新能源车'),
+    'sz.300750': ('宁德时代', '电池'),
+    'sh.601012': ('隆基绿能', '光伏'),
+    'sz.002415': ('海康威视', '安防'),
+}
+
+# =============================================================================
+# 行业分类配置
+# =============================================================================
+INDUSTRIES = {
+    'traditional': ['银行', '保险', '能源', '白酒', '地产', '基建', '汽车', '电力', '医药'],
+    'hi_tech': ['芯片', '软件', '电池', '光伏', '新能源车', '安防', '通信', '互联网'],
+}
+
+# =============================================================================
+# 配置验证函数
+# =============================================================================
+def validate_config():
+    """验证配置有效性"""
+    errors = []
+    
+    # 验证权重总和
+    total_weight = sum(WEIGHTS.values())
+    if abs(total_weight - 1.0) > 0.01:
+        errors.append(f"权重总和应为 1.0, 当前为{total_weight:.2f}")
+    
+    # 验证交易参数
+    if TRADING['stop_loss'] <= 0:
+        errors.append("止损比例必须大于 0")
+    if TRADING['take_profit'] <= TRADING['stop_loss']:
+        errors.append("止盈比例应大于止损比例")
+    
+    # 验证风控参数
+    if RISK['low_risk_threshold'] >= RISK['medium_risk_threshold']:
+        errors.append("低风险阈值应小于中风险阈值")
+    
+    return errors
+
+def get_config_summary():
+    """获取配置摘要"""
+    return {
+        'weights_total': sum(WEIGHTS.values()),
+        'trading': TRADING,
+        'risk_levels': {
+            'low': f"<{RISK['low_risk_threshold']}",
+            'medium': f"{RISK['low_risk_threshold']}-{RISK['medium_risk_threshold']}",
+            'high': f">{RISK['medium_risk_threshold']}",
+        },
+        'lstm_enabled': MODELS['lstm']['weight'] > 0,
+        'core_stocks_count': len(CORE_STOCKS),
+    }
+
+# =============================================================================
+# 主程序 - 配置测试
+# =============================================================================
+if __name__ == "__main__":
+    print("="*60)
+    print("DSS 配置验证")
+    print("="*60)
+    
+    errors = validate_config()
+    if errors:
+        print("❌ 配置错误:")
+        for err in errors:
+            print(f"  - {err}")
+    else:
+        print("✅ 配置验证通过")
+    
+    print("\n配置摘要:")
+    summary = get_config_summary()
+    for key, value in summary.items():
+        print(f"  {key}: {value}")
+    
+    print("\n权重分布:")
+    for name, weight in WEIGHTS.items():
+        bar = "█" * int(weight * 20)
+        print(f"  {name:15s} {weight:5.2f} {bar}")

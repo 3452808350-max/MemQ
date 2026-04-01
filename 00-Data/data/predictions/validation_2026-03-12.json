@@ -1,0 +1,90 @@
+{
+  "prediction_date": "2026-03-12",
+  "validation_date": "2026-03-20",
+  "predicted_count": 8,
+  "correct": 4,
+  "wrong": 4,
+  "accuracy": 50.0,
+  "details": [
+    {
+      "name": "宁德时代",
+      "code": "sz.300750",
+      "industry": "电池",
+      "old_price": 395.5,
+      "new_price": 413.0,
+      "change_pct": 4.424778761061947,
+      "pred_score": 50,
+      "correct": true
+    },
+    {
+      "name": "隆基绿能",
+      "code": "sh.601012",
+      "industry": "光伏",
+      "old_price": 18.94,
+      "new_price": 18.99,
+      "change_pct": 0.26399155227031235,
+      "pred_score": 35,
+      "correct": true
+    },
+    {
+      "name": "万科A",
+      "code": "sh.000002",
+      "industry": "地产",
+      "old_price": 4329.8586,
+      "new_price": 4149.1687,
+      "change_pct": -4.173113182033228,
+      "pred_score": 22,
+      "correct": false
+    },
+    {
+      "name": "比亚迪",
+      "code": "sz.002594",
+      "industry": "新能源车",
+      "old_price": 99.1,
+      "new_price": 103.03,
+      "change_pct": 3.9656912209889073,
+      "pred_score": 10,
+      "correct": true
+    },
+    {
+      "name": "招商银行",
+      "code": "sh.600036",
+      "industry": "银行",
+      "old_price": 39.5,
+      "new_price": 39.75,
+      "change_pct": 0.6329113924050633,
+      "pred_score": 8,
+      "correct": true
+    },
+    {
+      "name": "中国平安",
+      "code": "sh.601318",
+      "industry": "保险",
+      "old_price": 61.6,
+      "new_price": 59.74,
+      "change_pct": -3.0194805194805183,
+      "pred_score": 3,
+      "correct": false
+    },
+    {
+      "name": "保利地产",
+      "code": "sh.600048",
+      "industry": "地产",
+      "old_price": 6.39,
+      "new_price": 6.16,
+      "change_pct": -3.599374021909226,
+      "pred_score": 2,
+      "correct": false
+    },
+    {
+      "name": "恒生电子",
+      "code": "sh.600570",
+      "industry": "软件",
+      "old_price": 27.85,
+      "new_price": 26.1,
+      "change_pct": -6.283662477558348,
+      "pred_score": 1,
+      "correct": false
+    }
+  ]
+}

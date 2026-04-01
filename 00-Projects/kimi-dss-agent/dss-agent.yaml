@@ -1,0 +1,36 @@
+# DSS选股系统专用Agent配置
+# 用法: kimi --agent-file dss-agent.yaml
+
+version: 1
+agent:
+  name: dss-analyst
+  extend: default  # 继承默认Agent的所有工具
+  
+  system_prompt_path: ./dss-system-prompt.md
+  
+  # 自定义系统提示词参数
+  system_prompt_args:
+    DSS_VERSION: "4.3"
+    DSS_MODULES_PATH: "/home/kyj/.openclaw/workspace/dss_modules"
+    DSS_WORKSPACE: "/home/kyj/.openclaw/workspace"
+  
+  # 排除不需要的工具（可选）
+  exclude_tools: []
+  
+  # 子Agent定义
+  subagents:
+    technical:
+      path: ./subagent-technical.yaml
+      description: "技术面分析专家 - RSI、MACD、均线、去噪"
+    
+    fundamental:
+      path: ./subagent-fundamental.yaml
+      description: "基本面分析专家 - PE、ROE、研报、资金流向"
+    
+    sentiment:
+      path: ./subagent-sentiment.yaml
+      description: "情绪分析专家 - 新闻情绪、国际视角、市场氛围"
+    
+    data:
+      path: ./subagent-data.yaml
+      description: "数据获取专家 - 股票数据、新闻爬取、浏览器搜索"

@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-03-14T11:00:38.776Z",
+  "model": "minimax-2.5",
+  "scope": "perltqa-test-1773479736649",
+  "scales": {
+    "baseline": {
+      "total_queries": 200,
+      "recall_at_5": "0.550",
+      "recall_at_10": "0.550",
+      "mrr": "0.407"
+    },
+    "small": {
+      "total_queries": 500,
+      "recall_at_5": "0.410",
+      "recall_at_10": "0.410",
+      "mrr": "0.261"
+    },
+    "medium": {
+      "total_queries": 2000,
+      "recall_at_5": "0.199",
+      "recall_at_10": "0.199",
+      "mrr": "0.122"
+    },
+    "medium-large": {
+      "total_queries": 5000,
+      "recall_at_5": "0.105",
+      "recall_at_10": "0.105",
+      "mrr": "0.065"
+    },
+    "large": {
+      "total_queries": 10000,
+      "recall_at_5": "0.061",
+      "recall_at_10": "0.061",
+      "mrr": "0.038"
+    }
+  },
+  "data_points": [
+    200,
+    500,
+    2000,
+    5000,
+    10000
+  ]
+}

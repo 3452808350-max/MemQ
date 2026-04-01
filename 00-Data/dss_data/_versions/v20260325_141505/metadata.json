@@ -1,0 +1,22 @@
+{
+  "version_id": "v20260325_141505",
+  "timestamp": "2026-03-25T14:15:05.529458",
+  "trade_date": "2026-03-25",
+  "data_hash": "5c41ee64fd91ef213743b39974260fb107ce39432f1fbd5d847a04ad507f846f",
+  "file_count": 2,
+  "metadata": {
+    "description": "\u6536\u76d8\u540e\u6570\u636e\u5feb\u7167",
+    "file_hashes": [
+      {
+        "file": "trade_date=2026-03-25/symbol=600519/price_14f9d06e.parquet",
+        "hash": "8e897622f29fecf559369ff8a451981d11608bb5923e1ebb51071c8d53f4cbc6"
+      },
+      {
+        "file": "trade_date=2026-03-25/symbol=600519/price_metadata.json",
+        "hash": "eb7a6a03f22e9a6ba4e8725ba3d7248d821b59bb429a1556071e0a128fb743df"
+      }
+    ],
+    "source": "baostock",
+    "processed": true
+  }
+}

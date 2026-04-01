@@ -1,0 +1,16 @@
+{
+  "symbol": "600519",
+  "trade_date": "2026-03-25",
+  "data_type": "price",
+  "hash": "14f9d06efb4951baf5de2cc833a4735c0038a6d994ea96a268de1744aa5a8e26",
+  "rows": 25,
+  "columns": [
+    "date",
+    "open",
+    "high",
+    "low",
+    "close",
+    "volume"
+  ],
+  "timestamp": "2026-03-25T14:14:25.625809"
+}

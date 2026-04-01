@@ -1,0 +1,16 @@
+{
+  "name": "openclaw-ws-proxy",
+  "version": "1.0.0",
+  "description": "WebSocket proxy for OpenClaw Gateway",
+  "main": "ws-proxy.js",
+  "scripts": {
+    "start": "node ws-proxy.js",
+    "dev": "LOG_LEVEL=debug node ws-proxy.js"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

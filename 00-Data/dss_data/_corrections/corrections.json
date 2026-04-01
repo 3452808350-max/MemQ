@@ -1,0 +1,24 @@
+[
+  {
+    "correction_id": "corr_20260325_141425_628119",
+    "timestamp": "2026-03-25T14:14:25.628138",
+    "original_version": "v20260325_141425",
+    "field": "close",
+    "symbol": "600519",
+    "old_value": 100.5,
+    "new_value": 100.55,
+    "reason": "\u6570\u636e\u6e90\u4fee\u6b63",
+    "auditor": "system"
+  },
+  {
+    "correction_id": "corr_20260325_141505_530555",
+    "timestamp": "2026-03-25T14:15:05.530574",
+    "original_version": "v20260325_141505",
+    "field": "close",
+    "symbol": "600519",
+    "old_value": 100.5,
+    "new_value": 100.55,
+    "reason": "\u6570\u636e\u6e90\u4fee\u6b63",
+    "auditor": "system"
+  }
+]

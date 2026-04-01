@@ -1,0 +1,40 @@
+{
+  "error_memory": {
+    "text": "memory-lancedb-pro 记忆召回率只有 80%，部分关键信息（专注、独立、自由、平等、HiFi、电脑硬件）未被检索到。根因：数据写入环节缺失（数据源不同步、手动存储缺失、自动捕获未工作）。解决方案：补充存储 7 条记忆、创建同步脚本、创建验证脚本、配置定时任务。",
+    "category": "fact",
+    "scope": "global",
+    "importance": 0.95,
+    "tags": ["错误归因", "数据丢失", "记忆系统", "数据写入", "召回率"],
+    "metadata": {
+      "error_id": "ERR-20260313-001",
+      "error_type": "数据丢失",
+      "severity": "中",
+      "affected_system": "memory-lancedb-pro",
+      "root_cause_category": "数据写入",
+      "occurred_at": "2026-03-13T20:00:00",
+      "detected_at": "2026-03-13T20:10:00",
+      "resolved_at": "2026-03-13T20:25:00",
+      "resolution_time_minutes": 25,
+      "impact": "召回率从 95% 降至 80%",
+      "root_cause": "数据写入环节缺失（3 个原因）：1.数据源不同步（memory-preferences.md 是旧版本）2.手动存储缺失（留学文书未调用 memory_store）3.自动捕获未工作（autoCapture 只捕获对话）",
+      "solution": "1.补充存储 7 条记忆 2.创建 sync_memory_to_lancedb.py 脚本 3.创建 verify_memory_recall.py 脚本 4.配置每天同步 Cron 5.配置每周验证 Cron",
+      "prevention": "每天 02:00 自动同步 memory-*.md 到 LanceDB；每周日 03:00 自动验证召回率≥95%；低于阈值自动告警",
+      "lessons": [
+        "单一数据源原则 - 所有数据统一存储位置",
+        "自动化优先 - 减少人工操作",
+        "定期验证 - 每周测试召回率",
+        "犯错不可怕，就怕没记性 - 错误必须记录并添加特征值"
+      ],
+      "related_files": [
+        "memory_recall_root_cause_analysis.md",
+        "memory_prevention_measures.md",
+        "memory_fix_summary.md",
+        "sync_memory_to_lancedb.py",
+        "verify_memory_recall.py"
+      ],
+      "similar_errors": [],
+      "review_date": "2026-04-13",
+      "review_status": "pending"
+    }
+  }
+}

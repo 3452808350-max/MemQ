@@ -1,0 +1,18 @@
+{
+  "current_topic": null,
+  "last_topic": {
+    "topic": "MemQ 质量评分集成",
+    "timestamp": "2026-03-17 10:46",
+    "summary": "完成 MemQ Pro 质量评分系统集成到 OpenClaw，包括 Python 评分服务、TS 客户端、Gateway 启动钩子、记忆检索质量过滤",
+    "key_points": [
+      "Python 质量评分服务 (端口 5556) - 6 维度评分",
+      "TypeScript 客户端集成 - HTTP 调用",
+      "Gateway 启动钩子 - 自动启动服务",
+      "记忆检索质量过滤 - 阈值 0.4",
+      "服务管理脚本 - memq-services.sh"
+    ],
+    "file": "memory/topic-memq-integration.md"
+  },
+  "cleared_at": "2026-03-17 10:46",
+  "ready_for_new_topic": true
+}
