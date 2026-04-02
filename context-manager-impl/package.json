@@ -1,0 +1,26 @@
+{
+  "name": "context-manager",
+  "version": "0.1.0",
+  "description": "Claude Code 上下文管理 + OpenClaw 短期记忆融合实现",
+  "type": "module",
+  "main": "./src/core/index.js",
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts"
+  },
+  "keywords": [
+    "openclaw",
+    "context-management",
+    "memory",
+    "claude-code"
+  ],
+  "author": "OpenClaw Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.9.3",
+    "vitest": "^1.0.0"
+  }
+}

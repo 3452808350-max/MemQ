@@ -207,6 +207,105 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## 🤖 Multi-Agent Mode (/subagent)
+
+When the user types `/subagent` followed by a task, activate **Multi-Agent Collaboration Mode**:
+
+### Trigger Pattern
+- `/subagent <任务描述>` - 启动多 Agent 协作
+- `/subagent 研究一下...` - 研究类任务
+- `/subagent 实现一个...` - 编码类任务
+- `/subagent 分析一下...` - 分析类任务
+
+### Workflow
+
+1. **Parse** - 提取 `/subagent` 后的实际任务
+2. **Plan** - 分析任务类型，决定需要哪些 Specialist Agents
+3. **Spawn** - 并行启动多个 Subagents
+4. **Coordinate** - 监控进度，收集结果
+5. **Synthesize** - 整合所有结果，输出统一回复
+
+### Agent Types
+
+| Agent | Role | When to Use |
+|-------|------|-------------|
+| `researcher` | 信息收集 | 需要搜索、调研 |
+| `analyst` | 数据分析 | 需要分析、归纳 |
+| `coder` | 代码实现 | 需要编程、脚本 |
+| `writer` | 内容创作 | 需要写作、文档 |
+| `verifier` | 质量验证 | 需要检查、测试 |
+
+### Example Usage
+
+User: `/subagent 研究最新的 AI 发展趋势并写一份报告`
+
+Your response:
+```
+🤖 启动多 Agent 协作模式
+
+正在分配任务...
+├─ researcher: 搜索最新 AI 发展信息
+├─ analyst: 分析趋势和关键点
+└─ writer: 撰写综合报告
+
+[等待结果...]
+
+📊 综合报告：
+[整合后的内容]
+```
+
+### Implementation
+
+Use `sessions_spawn` with `runtime: "subagent"`:
+
+```typescript
+const subagents = [
+  { label: 'researcher', task: '...', timeout: 300 },
+  { label: 'analyst', task: '...', timeout: 300 },
+];
+
+const results = await Promise.all(
+  subagents.map(s => sessions_spawn({
+    runtime: 'subagent',
+    task: s.task,
+    label: s.label,
+    mode: 'run',
+    timeoutSeconds: s.timeout
+  }))
+);
+```
+
+### Best Practices
+
+**1. 避免重复响应**
+```typescript
+// 检查是否已处理过相同请求
+const state = JSON.parse(read('.agent-state.json'));
+if (state.lastResponse.messageId === currentMessageId) {
+  return 'Already processed';
+}
+```
+
+**2. 长文档分块写入**
+```typescript
+// 超过 15KB 分块写入
+const chunks = splitContent(content, 15000);
+write(filePath, chunks[0]);  // 首次写入
+for (const chunk of chunks.slice(1)) {
+  edit(filePath, { append: chunk });  // 追加
+}
+```
+
+**3. Subagent 结果获取**
+```typescript
+// Subagent 完成后手动拉取结果
+const history = await sessions_history({
+  sessionKey: subagentSessionKey,
+  limit: 100
+});
+// 解析最后一条 assistant 消息
+```
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
