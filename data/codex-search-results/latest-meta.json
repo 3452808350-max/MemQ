@@ -1,0 +1,8 @@
+{
+  "task": "ai-best-practices-2026",
+  "prompt": "查找 OpenAI、Anthropic、Google 三大 AI 公司总结的 AI 开发最佳实践、Agent 架构设计原则、提示工程技巧和工程化方法论",
+  "status": "completed",
+  "startTime": "2026-04-03T21:32:16+08:00",
+  "endTime": "2026-04-03T21:32:16+08:00",
+  "outputFile": "/home/kyj/.openclaw/workspace/data/codex-search-results/ai-best-practices-2026.md"
+}

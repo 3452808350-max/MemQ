@@ -309,3 +309,15 @@ const history = await sessions_history({
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
+
+## Claude Plugin 配置
+
+```yaml
+claude_plugin:
+  coordinator:
+    max_parallel_workers: 4
+    default_timeout_ms: 300000
+    enable_verification: true
+  default_permission_mode: bubble
+  agents_dir: ~/.openclaw/agents
+```
