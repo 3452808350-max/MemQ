@@ -221,13 +221,17 @@ def main():
                        help='股票代码列名 (默认: symbol)')
     parser.add_argument('--factors', type=str, nargs='+', default=None,
                        help='指定因子列名 (默认自动识别)')
-    parser.add_argument('--formats', type=str, nargs='+', 
+    parser.add_argument('--formats', type=str, nargs='+',
                        default=['json', 'csv', 'markdown'],
                        choices=['json', 'csv', 'markdown'],
                        help='导出格式')
-    
+    parser.add_argument('--email', action='store_true',
+                       help='发送邮件报告 (需要配置环境变量)')
+    parser.add_argument('--telegram', action='store_true',
+                       help='发送 Telegram 通知 (需要配置环境变量)')
+
     args = parser.parse_args()
-    
+
     try:
         report, files = validate_dss_factors(
             data_path=args.data_path,
@@ -240,9 +244,55 @@ def main():
             symbol_col=args.symbol_col,
             export_formats=args.formats
         )
-        
+
+        # 发送邮件
+        if args.email:
+            print("\n" + "=" * 60)
+            print("发送邮件报告")
+            print("=" * 60)
+
+            from email_sender import send_report_email
+
+            # 找到 markdown 报告
+            md_report = None
+            for f in files:
+                if f.endswith('.md'):
+                    md_report = f
+                    break
+
+            if md_report:
+                send_report_email(
+                    report_path=md_report,
+                    attachments=files
+                )
+            else:
+                print("✗ 未找到 Markdown 报告文件")
+
+        # 发送 Telegram 通知
+        if args.telegram:
+            print("\n" + "=" * 60)
+            print("发送 Telegram 通知")
+            print("=" * 60)
+
+            from telegram_notifier import send_validation_report
+
+            # 找到 markdown 报告
+            md_report = None
+            for f in files:
+                if f.endswith('.md'):
+                    md_report = f
+                    break
+
+            if md_report:
+                send_validation_report(
+                    report_path=md_report,
+                    summary=f"通过: {report.passed_factors}/{report.total_factors} ({report.passed_factors/report.total_factors*100:.1f}%)"
+                )
+            else:
+                print("✗ 未找到 Markdown 报告文件")
+
         print("\n✓ 验证完成!")
-        
+
     except Exception as e:
         print(f"\n✗ 错误: {e}")
         import traceback
