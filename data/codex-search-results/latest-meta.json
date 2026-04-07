@@ -1,8 +1,8 @@
 {
-  "task": "ai-best-practices-2026",
-  "prompt": "查找 OpenAI、Anthropic、Google 三大 AI 公司总结的 AI 开发最佳实践、Agent 架构设计原则、提示工程技巧和工程化方法论",
+  "task": "ai-harness-research",
+  "prompt": "Search for AI harness related papers and open source projects. Focus on: 1) Academic papers about AI harness frameworks for LLM agent orchestration and control 2) GitHub open source projects implementing AI harness concepts (include low star repositories, not just popular ones) 3) Research on AI harness for testing, evaluation, or safety of AI systems. Search arXiv, Google Scholar, GitHub, and other relevant sources. Provide comprehensive list with links, descriptions, and star counts for projects.",
   "status": "completed",
-  "startTime": "2026-04-03T21:32:16+08:00",
-  "endTime": "2026-04-03T21:32:16+08:00",
-  "outputFile": "/home/kyj/.openclaw/workspace/data/codex-search-results/ai-best-practices-2026.md"
+  "startTime": "2026-04-07T15:51:26+08:00",
+  "endTime": "2026-04-07T15:51:26+08:00",
+  "outputFile": "/home/kyj/.openclaw/workspace/data/codex-search-results/ai-harness-research.md"
 }
