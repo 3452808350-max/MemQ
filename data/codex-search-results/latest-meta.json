@@ -1,8 +1,14 @@
 {
-  "task": "ai-harness-research",
-  "prompt": "Search for AI harness related papers and open source projects. Focus on: 1) Academic papers about AI harness frameworks for LLM agent orchestration and control 2) GitHub open source projects implementing AI harness concepts (include low star repositories, not just popular ones) 3) Research on AI harness for testing, evaluation, or safety of AI systems. Search arXiv, Google Scholar, GitHub, and other relevant sources. Provide comprehensive list with links, descriptions, and star counts for projects.",
+  "task": "cursor-ide-feedback-2026q1",
+  "prompt": "搜索 2026年 Cursor IDE 用户反馈，包括：AI coding 问题、scope creep 案例、多文件编辑问题、性能问题、用户体验抱怨。覆盖平台：Hacker News、Reddit r/cursor、GitHub Issues、Discord Cursor 社区。重点关注不同水平开发者（新手 vs 高级）的使用差异。",
   "status": "completed",
-  "startTime": "2026-04-07T15:51:26+08:00",
-  "endTime": "2026-04-07T15:51:26+08:00",
-  "outputFile": "/home/kyj/.openclaw/workspace/data/codex-search-results/ai-harness-research.md"
+  "startTime": "2026-04-08T17:03:31+08:00",
+  "endTime": "2026-04-08T17:03:31+08:00",
+  "outputFile": "data/codex-search-results/cursor-ide.md"
+}
+具体案例。",
+  "status": "completed",
+  "startTime": "2026-04-08T17:03:31+08:00",
+  "endTime": "2026-04-08T17:03:31+08:00",
+  "outputFile": "data/codex-search-results/main-search.md"
 }
