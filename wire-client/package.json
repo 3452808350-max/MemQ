@@ -1,0 +1,23 @@
+{
+  "name": "openclaw-wire-client",
+  "version": "1.0.0",
+  "description": "Wire Client for OpenClaw - Call Kimi CLI via Wire protocol 1.7",
+  "main": "dist/WireClient.js",
+  "types": "dist/WireClient.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "wire",
+    "kimi",
+    "agent",
+    "openclaw"
+  ],
+  "author": "OpenClaw",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

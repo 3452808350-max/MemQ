@@ -227,13 +227,21 @@ When the user types `/subagent` followed by a task, activate **Multi-Agent Colla
 
 ### Agent Types
 
-| Agent | Role | When to Use |
-|-------|------|-------------|
-| `researcher` | 信息收集 | 需要搜索、调研 |
-| `analyst` | 数据分析 | 需要分析、归纳 |
-| `coder` | 代码实现 | 需要编程、脚本 |
-| `writer` | 内容创作 | 需要写作、文档 |
-| `verifier` | 质量验证 | 需要检查、测试 |
+| Agent | Role | Runtime | When to Use |
+|-------|------|---------|-------------|
+| `researcher` | 信息收集 | subagent | 需要搜索、调研 |
+| `analyst` | 数据分析 | subagent | 需要分析、归纳 |
+| `coder` | 代码实现 | subagent | 需要编程、脚本 |
+| `writer` | 内容创作 | subagent | 需要写作、文档 |
+| `verifier` | 质量验证 | subagent | 需要检查、测试 |
+| `kimi` | 规划+引导 | **wire** | 需要 Plan Mode 或 steer |
+
+**Wire Runtime 特点**：
+- 使用 Kimi CLI 作为外部 agent
+- 支持 Plan Mode（任务规划）
+- 支持 steer（注入消息引导方向）
+- 流式收集事件
+- 适合复杂任务规划场景
 
 ### Example Usage
 
@@ -256,7 +264,7 @@ Your response:
 
 ### Implementation
 
-Use `sessions_spawn` with `runtime: "subagent"`:
+**Subagent Runtime** - Use `sessions_spawn`:
 
 ```typescript
 const subagents = [
@@ -273,6 +281,34 @@ const results = await Promise.all(
     timeoutSeconds: s.timeout
   }))
 );
+```
+
+**Wire Runtime** - Use `wire_call` or `WireClient`:
+
+```typescript
+// 快速调用
+const { wire_call } = require('/home/kyj/.openclaw/workspace/wire-client/dist/WireClient');
+const kimiResult = await wire_call('规划并实现...', { cwd: process.cwd() });
+
+// 完整控制（Plan + Steer）
+const { WireClient } = require('/home/kyj/.openclaw/workspace/wire-client/dist/WireClient');
+const kimi = new WireClient({ command: 'kimi', args: ['--wire'], cwd: process.cwd(), timeout: 300 });
+await kimi.start();
+await kimi.initialize({ supportsPlanMode: true });
+await kimi.setPlanMode(true);
+const plan = await kimi.prompt('创建实现计划...');
+await kimi.steer('使用 Python asyncio');  // 引导方向
+kimi.close();
+```
+
+**Mixed Runtime** - 混合使用：
+
+```typescript
+// 并行启动：researcher (subagent) + kimi (wire)
+const [research, plan] = await Promise.all([
+  sessions_spawn({ runtime: 'subagent', task: 'Research...', label: 'researcher' }),
+  wire_call('Plan implementation...', { cwd: process.cwd() }),
+]);
 ```
 
 ### Best Practices

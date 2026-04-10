@@ -1,0 +1,26 @@
+{
+  "name": "openclaw-acp-client",
+  "version": "1.0.0",
+  "description": "ACP Client for OpenClaw - Call external ACP agents (Claude Code, Codex, Copilot)",
+  "main": "dist/ACPClient.js",
+  "types": "dist/ACPClient.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "node test/test.js",
+    "test:claude": "node test/test-claude.js"
+  },
+  "keywords": [
+    "acp",
+    "agent",
+    "claude",
+    "codex",
+    "copilot",
+    "openclaw"
+  ],
+  "author": "OpenClaw",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
