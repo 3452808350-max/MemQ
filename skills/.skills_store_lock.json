@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "skills": {
+    "基本资料查询": {
+      "name": "基本资料查询",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E5%9F%BA%E6%9C%AC%E8%B5%84%E6%96%99%E6%9F%A5%E8%AF%A2",
+      "source": "skillhub",
+      "version": ""
+    },
+    "问财选港股": {
+      "name": "问财选港股",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E9%97%AE%E8%B4%A2%E9%80%89%E6%B8%AF%E8%82%A1",
+      "source": "skillhub",
+      "version": ""
+    },
+    "财务数据查询": {
+      "name": "财务数据查询",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E8%B4%A2%E5%8A%A1%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2",
+      "source": "skillhub",
+      "version": ""
+    },
+    "事件数据查询": {
+      "name": "事件数据查询",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E4%BA%8B%E4%BB%B6%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2",
+      "source": "skillhub",
+      "version": ""
+    },
+    "行业数据查询": {
+      "name": "行业数据查询",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E8%A1%8C%E4%B8%9A%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2",
+      "source": "skillhub",
+      "version": ""
+    },
+    "宏观数据查询": {
+      "name": "宏观数据查询",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E5%AE%8F%E8%A7%82%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2",
+      "source": "skillhub",
+      "version": ""
+    },
+    "行情数据查询": {
+      "name": "行情数据查询",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E8%A1%8C%E6%83%85%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2",
+      "source": "skillhub",
+      "version": ""
+    },
+    "问财选美股": {
+      "name": "问财选美股",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E9%97%AE%E8%B4%A2%E9%80%89%E7%BE%8E%E8%82%A1",
+      "source": "skillhub",
+      "version": ""
+    },
+    "模拟炒股": {
+      "name": "模拟炒股",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E6%A8%A1%E6%8B%9F%E7%82%92%E8%82%A1",
+      "source": "skillhub",
+      "version": ""
+    },
+    "问财选A股": {
+      "name": "问财选A股",
+      "zip_url": "http://ms.10jqka.com.cn/gateway/market/api/v1/skills/square/download?name=%E9%97%AE%E8%B4%A2%E9%80%89A%E8%82%A1",
+      "source": "skillhub",
+      "version": ""
+    }
+  }
+}

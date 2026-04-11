@@ -108,7 +108,7 @@ timeout "$TIMEOUT" bash -c "
   cd '$HOME/.openclaw/workspace'
   # Use codex CLI if available, otherwise simulate with web search
   if command -v codex &> /dev/null; then
-    echo '$PROMPT' | codex --model '$MODEL' --web-search > '$CODEX_OUTPUT' 2>&1
+    echo '$PROMPT' | codex --model '$MODEL' --search > '$CODEX_OUTPUT' 2>&1
   else
     echo 'Codex CLI not available. Using alternative search method...' > '$CODEX_OUTPUT'
     # Fallback: use curl to search and summarize

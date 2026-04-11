@@ -1,0 +1,14 @@
+{
+  "username": "skill_1775890726718",
+  "capital_account": "115121466",
+  "department_id": "997376",
+  "shareholder_accounts": {
+    "sz": "00165907479",
+    "sh": "A541627822"
+  },
+  "market_codes": {
+    "sz": "1",
+    "sh": "2"
+  },
+  "created_at": "2026-04-11T15:00:00+08:00"
+}

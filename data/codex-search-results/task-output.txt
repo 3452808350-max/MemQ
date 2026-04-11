@@ -1,8 +1,1 @@
-error: unexpected argument '--web-search' found
-
-  tip: a similar argument exists: '--search'
-
-Usage: codex [OPTIONS] [PROMPT]
-       codex [OPTIONS] <COMMAND> [ARGS]
-
-For more information, try '--help'.
+Error: stdin is not a terminal

@@ -1,14 +1,8 @@
 {
-  "task": "cursor-ide-feedback-2026q1",
-  "prompt": "搜索 2026年 Cursor IDE 用户反馈，包括：AI coding 问题、scope creep 案例、多文件编辑问题、性能问题、用户体验抱怨。覆盖平台：Hacker News、Reddit r/cursor、GitHub Issues、Discord Cursor 社区。重点关注不同水平开发者（新手 vs 高级）的使用差异。",
+  "task": "ai-hot-news-2026-04",
+  "prompt": "2026年4月最近两周AI人工智能领域的大事、热点新闻、重大发布、技术突破。包括：OpenAI、Google、Anthropic、Meta等大公司动态，新模型发布，AI应用趋势，开源项目热点，投融资新闻。请按时间线整理，标注来源和日期。",
   "status": "completed",
-  "startTime": "2026-04-08T17:03:31+08:00",
-  "endTime": "2026-04-08T17:03:31+08:00",
-  "outputFile": "data/codex-search-results/cursor-ide.md"
-}
-具体案例。",
-  "status": "completed",
-  "startTime": "2026-04-08T17:03:31+08:00",
-  "endTime": "2026-04-08T17:03:31+08:00",
-  "outputFile": "data/codex-search-results/main-search.md"
+  "startTime": "2026-04-11T16:11:27+08:00",
+  "endTime": "2026-04-11T16:11:27+08:00",
+  "outputFile": "/home/kyj/.openclaw/workspace/data/codex-search-results/ai-hot-news-2026-04.md"
 }
